@@ -1,14 +1,11 @@
 package com.cgvsu.model;
 
 import com.cgvsu.objreader.ObjReader;
-import com.cgvsu.objreader.ObjWriter;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +29,7 @@ class ModelTest {
 //[2, 6, 4, 0]
 //[7, 3, 1, 5]
 
-        Model model = init();
+        Model model = initModel();
         //Т.к в obj формате отсчет начинается с 1, а модели хранятся в классах начиная с нуля,
         //Чтобы удалить вершину под номером 2 в obj формате, необходимо задать значение 1
         model.deleteVertice(1);
@@ -55,8 +52,7 @@ class ModelTest {
         }
     }
 
-    public static Model init() throws IOException {
-
+    public static Model initModel() throws IOException {
         Path fileName = Path.of("src/com/cgvsu/3DModels/CaracalCube/caracal_cube.obj");
         String fileContent = Files.readString(fileName);
         return ObjReader.read(fileContent);
